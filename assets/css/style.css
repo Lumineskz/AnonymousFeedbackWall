@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace;
+}
+body{
+  
+    background-color: #2e2d39;
+}
+.container{
+  margin-top: 80px;
+}
+.link{
+  margin-top: 10px;
+    color: #ffadfc;
+    transition: color 0.2s;
+}
+.link:hover{
+    color: #eb8ac972;
+    text-decoration: wavy;
+}
+/* Room Page */
+.room-container{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #3a3744;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+.login-form{
+  text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 250px auto;
+    padding: 30px;
+    border: 3px solid #493b4b;
+    border-radius: 15px;
+    background-color: #2c2933;
+}
+.login-form h2{
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+.login-form input{
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #493b4b;
+    border-radius: 3px;
+    background-color: #3a3744;
+    color: #f0f0f0;
+}
+.login-form input:focus{
+    outline: none;
+    border-color: #eb8ac972;
+    box-shadow: 0 0 5px #eb8ac944;
+}
+
+.login-form button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #332933;
+    color: #f0f0f0;
+    cursor: pointer;
+    border: 3px solid #493b4b;
+    transition: background-color 0.3s;
+}
+.login-form button:hover{
+    background-color: #493b4b;
+}
+.login-form a{
+  font-size: 14px;
+    text-align: left;
+    color: #eb8ac9;
+    margin-top: 15px;
+    display: inline-block;
+    transition: color 0.2s;
+}
+.login-form a:hover{
+    text-decoration:wavy;
+    color: #eb8ac972;
+}
+/* Nav Header */
+.nav{
+    position: fixed;
+    top: 0px;
+    display: flex;
+    width: 100%;
+    gap: 60%;
+    background-color: #69637757;
+    justify-content: center;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px) saturate(180%);
+    align-items: center;
+    color: white;
+    z-index: 1000 ;
+
+}
+.nav a{
+  background-color: #67546a;
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+/* Rooms Page */
+.create-room{
+    background-color: #493b4b;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    border: 3px solid #332933;
+}
+.create-room:hover, .nav a:hover{
+    background-color: #544254;
+}
+
+#search{
+    margin-top: 20px;
+    padding: 8px;
+    width: 30%;
+    border-radius: 5px;
+    border: 2px solid #524554;
+    background-color: #3a3744;
+    color: #f0f0f0;
+}
+
+.card-room{
+    background-color: #68637873;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    max-width: 200px;
+    max-height: 150px;
+    text-overflow: ellipsis;
+}
+.card-room p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Number of lines to show */
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.card-room a{
+    color: #e9b4fc;
+    margin-bottom: 10px;
+}
+.card-room a:hover{
+  color: #fff;
+}
+.card-room p{
+    color: #d1cfd6;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.search-form button{
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #33293394;
+    color: #f0f0f0;
+    cursor: pointer;
+    border: 3px solid #493b4b;
+    transition: background-color 0.3s;
+}
+.search-form button:hover{
+    background-color: #493b4b;
+}
+.rooms{
+  display: flex;
+  gap: 20px;
+}
+/* Create Room Form */
+.create-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 200px auto;
+    padding: 30px;
+    border: 3px solid #493b4b;
+    border-radius: 15px;
+    background-color: #2c2933;
+    text-align: center ;
+}
+.create-form h2{
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+.create-form input, .create-form textarea{
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #493b4b;
+    border-radius: 5px;
+    background-color: #3a3744;
+    color: #f0f0f0;
+}
+.create-form input:focus, .create-form textarea:focus{
+    outline: none;
+    border-color: #eb8ac972;
+    box-shadow: 0 0 5px #eb8ac944;
+}
+.create-form button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #332933;
+    color: #f0f0f0;
+    cursor: pointer;
+    border: 3px solid #493b4b;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.create-form button:hover{
+    background-color: #493b4b;
+}
+.file-input::file-selector-button {
+    background-color: #493b4b;
+    color: #f0f0f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Room Page - Feedback Section */
+.feedback-form{
+  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #3a3744;
+    margin: 20px 10%;
+    border-radius: 10px;;
+}
+.feedback-form textarea{
+    padding: 10px;
+    border: 1px solid #493b4b;
+    border-radius: 5px;
+    background-color: #2c2933;
+    color: #f0f0f0;
+    resize: vertical;
+    min-height: 80px;
+}
+.feedback-form textarea:focus{
+    outline: none;
+    border-color: #eb8ac972;
+    box-shadow: 0 0 5px #eb8ac944;
+}
+.feedback-form button{
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #332933;
+    color: #f0f0f0;
+    cursor: pointer;
+    border: 3px solid #493b4b;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+.feedback-form button:hover{
+    background-color: #493b4b;
+}
+.uname{
+    display: inline;
+    color: #f0f0f0;
+    margin-left: 8px;
+}
+#use_session_name_chk{
+    transform: scale(1.2);
+    margin-left: 12px;
+    margin-bottom: 15px;
+}
+.comment-area{
+    margin: 20px 10%;
+    background-color: #5245542c;
+    padding: 20px;
+    border-radius: 10px;
+}
+.comment-area .comment{
+    background-color: #2c2933;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.comment-area .comment .msg-title{
+    color: #ffadfc;
+    font-size: 16px;
+}
+.comment-area .comment .msg{
+    color: #d1cfd6;
+    margin: 10px 0;
+    font-size: 15px;
+}
+.comment-area .comment .crdt{
+    color: #a8a6b1a7;
+    font-size: 12px;
+}
