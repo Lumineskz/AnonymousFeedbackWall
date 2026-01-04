@@ -6,6 +6,7 @@ include "../config/config.php";
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- Link to external CSS stylesheet -->
     <link rel="stylesheet" href="../assets/css/style.css">

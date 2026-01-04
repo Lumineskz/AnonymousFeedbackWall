@@ -322,9 +322,71 @@ body{
     color: #d1cfd6;
     text-align: center;
     margin-bottom: 20px;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .made-by{
     color: #a8a6b1a7;
     text-align: center;
     margin-bottom: 30px;
+}
+
+/* Responsive Page Mobile */
+@media (max-width: 768px) {
+    a{
+        font-size: 14px;
+    }
+    p{
+        font-size: 14px;
+    }
+    .login-form, .create-form {
+        width: 80%; /* Use 90% of the screen width instead of 1100px */
+        margin: 150px auto; /* Reduce top margin so you don't have to scroll forever */
+    }
+    .room-container {
+        padding: 10px;
+        max-width: 90%; /* Adjust container width for mobile */
+        gap: 10px;
+    }
+    .room-container h2{
+        margin-bottom: 14px;
+        font-size: 20px;
+    }
+    .room-container .rooms {
+        flex-direction: column; /* Stack room cards vertically on mobile */
+        align-items: center;
+        gap: 1px;
+    }
+    .room-container .card-room {
+        min-width: 100%; /* Make room cards take more width on mobile */
+        margin-bottom: -5px;
+    }
+    #search {
+        width: 180px; /* Make search bar wider on mobile for easier tapping */
+        padding: 6px;
+    }
+    .create-room{
+        padding: 9px 8px;
+        font-size: 12px;
+    }
+    .search-form button{
+        padding: 6px;
+    }
+    .create-form {
+        width: 90%; /* Use 90% of the screen width instead of 400px */
+        margin: 120px auto; /* Further reduce top margin for mobile */
+    }
+    .feedback-form, .comment-area {
+        margin: 20px 5%; /* Reduce side margins for mobile */
+    }
+    .room-desc, .made-by {
+        max-width: 90%;
+        
+        font-size: 14px; /* Adjust font size for better readability on mobile */
+    }
+    .room-title {
+        font-size: 22px; /* Adjust title size for mobile */
+    }
 }

@@ -1,6 +1,7 @@
 <head>
     <title>Room Feedback</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5f3c0ac785.js" crossorigin="anonymous"></script>
 </head>
 <body>

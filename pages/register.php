@@ -1,6 +1,7 @@
 <head>
     <title>Room Feedback</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <form method="POST" action="../actions/register_user.php" class="login-form">
     <h2>Register</h2>
