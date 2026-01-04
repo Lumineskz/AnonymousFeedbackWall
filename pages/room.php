@@ -25,10 +25,10 @@ if (!$room) {
     die("Room not found");
 }
 ?>
-
+<div class="container">
 <!-- 3️⃣ Display room -->
-<h2><?= htmlspecialchars($room['title']) ?></h2>
-<p><?= nl2br(htmlspecialchars($room['description'])) ?></p>
+<h2 class="room-title"><?= htmlspecialchars($room['title']) ?></h2>
+<p class="room-desc"><?= nl2br(htmlspecialchars($room['description'])) ?></p>
 
 
 <!-- 4️⃣ Comment form -->
@@ -85,6 +85,7 @@ while ($row = $result->fetch_assoc()):
         <small class="crdt"><?= $row['created_at'] ?></small>
     </div>
 <?php endwhile; ?>
+</div>
 </div>
 </body>
 </html>

@@ -8,7 +8,15 @@
 include "../includes/auth.php";
 include "../includes/header.php";
 
-$result = $conn->query("SELECT * FROM rooms ORDER BY created_at DESC");
+$search_term = "";
+if (isset($_POST['submit_search']) && !empty($_POST['search_term'])) {
+    $search_term = $conn->real_escape_string($_POST['search_term']);
+    $result = $conn->query("SELECT * FROM rooms WHERE title LIKE '%$search_term%' OR description LIKE '%$search_term%' ORDER BY created_at DESC");
+} elseif (isset($_POST['clear_search'])) {
+    $result = $conn->query("SELECT * FROM rooms ORDER BY created_at DESC");
+} else {
+    $result = $conn->query("SELECT * FROM rooms ORDER BY created_at DESC");
+}
 
 ?>
 
@@ -17,7 +25,7 @@ $result = $conn->query("SELECT * FROM rooms ORDER BY created_at DESC");
     <h2 style="color:white; text-align:center;">Rooms</h2>
     
 
-<form action="../actions/search.php" method="post" class="search-form">
+<form action="" method="post" class="search-form">
     <a href="create_room.php" class="create-room"><i class="fa-solid fa-plus"></i> Create Room</a>
     
     <input type="text" name="search_term" id="search" placeholder="Search rooms...">
