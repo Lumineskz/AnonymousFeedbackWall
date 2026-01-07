@@ -131,12 +131,12 @@ body{
     border-radius: 5px;
     border: 2px solid #2f39f8;
     background-color: #eaeaea;
-    color: #f0f0f0;
+    color: #131313;
 }
 #search:focus{
     outline: none;
-    border-color: #eb8ac972;
-    box-shadow: 0 0 5px #eb8ac944;
+    border-color: #4c41e872;
+    box-shadow: 0 0 5px #3b18ec44;
 }
 /* Room Cards */
 .card-room{
@@ -265,7 +265,7 @@ body{
     border: 1px solid #3c24ea;
     border-radius: 5px;
     background-color: #ececec;
-    color: #f0f0f0;
+    color: #323232;
     resize: vertical;
     min-height: 80px;
 }
