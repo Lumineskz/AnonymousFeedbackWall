@@ -5,7 +5,7 @@
     font-family: 'JetBrains Mono', monospace;
 }
 body{
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(229, 229, 240);
 }
 .container{
   margin-top: 80px;
@@ -19,24 +19,14 @@ body{
     color: #344aedc0;
     text-decoration: wavy;
 }
-/* Room Page */
-.room-container{
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    flex-wrap: wrap;
-}
+
 
 .login-form{
   text-align: center;
     display: flex;
     flex-direction: column;
     width: 300px;
-    margin: 250px auto;
+    margin: 11% auto;
     padding: 30px;
     border: 3px solid #7370be;
     border-radius: 15px;
@@ -91,10 +81,10 @@ body{
     display: flex;
     width: 100%;
     gap: 60%;
-    background-color: #d6ccf057;
+    background-color: #f5f1ff66;
     justify-content: center;
     padding: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(102, 112, 205, 0.2);
     backdrop-filter: blur(4px) saturate(180%);
     align-items: center;
     color: rgb(57, 57, 57);
@@ -109,10 +99,20 @@ body{
     border-radius: 5px;
     transition: background-color 0.3s;
 }
-
+/* Room Page */
+.room-container{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #f3f3ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
 /* Rooms Page */
 .create-room{
-    background-color: #e3e1e3;
+    background-color: #f0eef9;
     font-weight: bold;
     color: #151515;
     text-decoration: none;
@@ -121,7 +121,10 @@ body{
     transition: background-color 0.3s;
     border: 2px solid #7370be;
 }
-.create-room:hover, .nav a:hover{
+.create-room:hover{
+    background-color: #ced2e7;
+}
+ .nav a:hover{
     background-color: #7070da;
 }
 
@@ -131,7 +134,7 @@ body{
     width: 30%;
     border-radius: 5px;
     border: 2px solid #7370be;
-    background-color: #eaeaea;
+    background-color: #f0eef9;
     color: #131313;
 }
 #search:focus{
@@ -141,7 +144,7 @@ body{
 }
 /* Room Cards */
 .card-room{
-    background-color: #fefefe5d;
+    background-color: #c5c3ce36;
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
@@ -178,7 +181,7 @@ body{
     padding: 8px;
     border: none;
     border-radius: 5px;
-    background-color: #e1e1e194;
+    background-color: #f0eef9;
     color: #151515;
     cursor: pointer;
     border: 2px solid #7370be;
