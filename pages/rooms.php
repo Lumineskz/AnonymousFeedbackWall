@@ -34,7 +34,7 @@ if (isset($_POST['submit_search']) && !empty($_POST['search_term'])) {
 
 <div class="container">
     <div class="room-container">
-        <h2 style="color:white; text-align:center;">Rooms</h2>
+        <h2 style="color:black; text-align:center;">Rooms</h2>
         
         <form action="" method="post" class="search-form">
             <a href="create_room.php" class="create-room"><i class="fa-solid fa-plus"></i> Create Room</a>

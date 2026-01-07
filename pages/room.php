@@ -80,7 +80,7 @@ if (!$room) {
 
 
     <div class="comment-area">
-        <h2 style="color:white; text-align: center; margin-bottom:10px">Feedbacks</h2>
+        <h2 style="color:#151515; text-align: center; margin-bottom:10px">Feedbacks</h2>
     <?php
     // Get all feedback for this specific room, newest first
     $comments = $conn->prepare(
