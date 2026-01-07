@@ -148,7 +148,7 @@ body{
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(107, 81, 255, 0.2);
     min-width: 215px;
     max-width: 215px;
     min-height: 100px;
@@ -205,7 +205,7 @@ body{
     padding: 30px;
     border: 3px solid #7370be;
     border-radius: 15px;
-    background-color: #eaeaea;
+    background-color: #f3f3ff;
     text-align: center ;
 }
 .create-form h2{
@@ -217,7 +217,7 @@ body{
     padding: 10px;
     border: 1px solid #7370be;
     border-radius: 5px;
-    background-color: #ebebeb;
+    background-color: #f3f3ff;
     color: #151515;
 }
 .create-form input:focus, .create-form textarea:focus{
@@ -255,7 +255,7 @@ body{
   padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #f3f3ff;
     margin: 20px 10%;
     border-radius: 10px;;
 }
@@ -268,7 +268,7 @@ body{
     padding: 10px;
     border: 1px solid #7370be;
     border-radius: 5px;
-    background-color: #ececec;
+    background-color: #f3f3ff;
     color: #323232;
     resize: vertical;
     min-height: 80px;
@@ -373,9 +373,13 @@ body{
         align-items: center;
         gap: 1px;
     }
+    #search{
+        margin-bottom: 10px;
+    }
     .room-container .card-room {
-        min-width: 100%; /* Make room cards take more width on mobile */
-        margin-bottom: -5px;
+        min-width: 95%; /* Make room cards take more width on mobile */
+        max-width: 95%;
+
     }
     #search {
         width: 180px; /* Make search bar wider on mobile for easier tapping */
