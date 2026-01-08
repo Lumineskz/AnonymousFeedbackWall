@@ -42,10 +42,15 @@ Languages used in the repo include **PHP, CSS, HTML**. :contentReference[oaicite
 
 ## 📁 Repository Structure
 ├── index.php # Main user interface
+
 ├── anonfeedbackwall.sql # Database schema & seed
+
 ├── assets/ # CSS / JS / Images
+
 ├── includes/ # Reusable PHP modules
+
 ├── pages/ # Secondary page views
+
 └── README.md
 
 
