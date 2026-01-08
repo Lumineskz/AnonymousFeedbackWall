@@ -41,4 +41,97 @@ Languages used in the repo include **PHP, CSS, HTML**. :contentReference[oaicite
 ---
 
 ## 📁 Repository Structure
+├── index.php # Main user interface
+├── anonfeedbackwall.sql # Database schema & seed
+├── assets/ # CSS / JS / Images
+├── includes/ # Reusable PHP modules
+├── pages/ # Secondary page views
+└── README.md
 
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Lumineskz/AnonymousFeedbackWall.git
+cd AnonymousFeedbackWall
+```
+### 2. Setup Database
+
+1. Start your web server (e.g., XAMPP / WAMP / LAMP) with Apache and MySQL.
+
+2. Open phpMyAdmin at http://localhost/phpmyadmin
+
+3. Create a database named:
+
+```anonfeedbackwall```
+4. Import the SQL file:
+
+```anonfeedbackwall.sql```
+### 3. Configure Database Connection
+
+If required, update the database credentials in your PHP config file (e.g., includes/db.php).
+
+Example:
+```php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "anonfeedbackwall";
+```
+
+### 4. Run the App
+
+Visit in your browser:
+
+```http://localhost/AnonymousFeedbackWall/```
+
+
+You should see the feedback submission form.
+
+## 🧪 Usage
+### 🗨️ As a User
+
+Navigate to the app URL
+
+Enter your feedback
+
+Submit anonymously — no login required
+
+### 👤 As Admin
+
+Some apps include an admin view to:
+
+View all feedback
+
+Delete inappropriate entries
+
+If your version includes an admin page, navigate to that URL (e.g., admin.php) and use the credentials configured in the database.
+
+### 🧩 How It Works (High-Level)
+
+User opens feedback form (index.php)
+
+Feedback is submitted via POST
+
+Server stores feedback in the database
+
+Feedback listings are pulled and displayed without user identity
+
+This simple design protects anonymity while still organizing feedback for analysis.
+
+### ✨ Contributing
+
+Contributions are welcome!
+To contribute:
+
+Fork the repo
+
+Create a new branch (feature-name)
+
+Commit your changes
+
+Push and open a Pull Request
