@@ -1,4 +1,5 @@
-This was the first prototype repo of this project:
+This was the first prototype repo of this project:(All previous commits are on this repository)
+
 https://github.com/Lumineskz/AnonFeedbackWall
 
 # Anonymous Feedback Wall
