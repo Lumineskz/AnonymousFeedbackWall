@@ -30,7 +30,7 @@ body{
     padding: 30px;
     border: 3px solid #7370be;
     border-radius: 15px;
-    background-color: whitesmoke;
+    background-color: #e9ebf0;
 }
 .login-form h2{
     color: #151515;
@@ -148,7 +148,7 @@ body{
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(107, 81, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(107, 81, 255, 0.2);
     min-width: 215px;
     max-width: 215px;
     min-height: 100px;
@@ -309,7 +309,7 @@ body{
     border-radius: 10px;
 }
 .comment-area .comment{
-    background-color: #ebebec;
+    background-color: #bdb9cf36;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -355,6 +355,10 @@ body{
     p{
         font-size: 14px;
     }
+    .nav{
+        gap: 40%;
+        padding: 8px 0;
+    }
     .login-form, .create-form {
         width: 80%; /* Use 90% of the screen width instead of 1100px */
         margin: 150px auto; /* Reduce top margin so you don't have to scroll forever */
@@ -379,7 +383,7 @@ body{
     .room-container .card-room {
         min-width: 95%; /* Make room cards take more width on mobile */
         max-width: 95%;
-
+        margin-bottom: -5px;
     }
     #search {
         width: 180px; /* Make search bar wider on mobile for easier tapping */
