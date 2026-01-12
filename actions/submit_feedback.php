@@ -29,13 +29,28 @@ if ($display_name === "") {
     $display_name = "Anon";
 }
 
+$image = null;
+if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    $target_dir = "../assets/images/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if($check !== false) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $image = basename($_FILES["image"]["name"]);
+        }
+    }
+}
+
 // Insert feedback into database using prepared statement (prevents SQL injection)
 $stmt = $conn->prepare(
-    "INSERT INTO feedback (room_id, user_id, message, display_name)
-     VALUES (?, ?, ?, ?)"
+    "INSERT INTO feedback (room_id, user_id, message, display_name, image)
+     VALUES (?, ?, ?, ?, ?)"
 );
 // Bind parameters: i=integer, s=string
-$stmt->bind_param("iiss", $room_id, $user_id, $message, $display_name);
+$stmt->bind_param("iisss", $room_id, $user_id, $message, $display_name, $image);
 $stmt->execute();
 
 // Send user back to the room page after feedback is submitted

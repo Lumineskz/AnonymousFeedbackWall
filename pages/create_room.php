@@ -17,7 +17,7 @@ include "../includes/header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<form method="POST" action="../actions/create_room.php" class="create-form">
+<form method="POST" action="../actions/create_room.php" enctype="multipart/form-data" class="create-form">
     <h2>Create Room</h2>
     <input name="title" placeholder="Room Title" required>
     <textarea name="description" placeholder="Description" required></textarea>

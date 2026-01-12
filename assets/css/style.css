@@ -152,7 +152,7 @@ body{
     min-width: 215px;
     max-width: 215px;
     min-height: 100px;
-    max-height: 150px;
+    max-height: 400px;
     text-overflow: ellipsis;
 }
 .card-room p{
@@ -272,6 +272,7 @@ body{
     color: #323232;
     resize: vertical;
     min-height: 80px;
+    margin-bottom: 10px;
 }
 .feedback-form textarea:focus{
     outline: none;

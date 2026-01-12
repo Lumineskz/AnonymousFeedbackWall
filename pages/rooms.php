@@ -57,6 +57,10 @@ if (isset($_POST['submit_search']) && !empty($_POST['search_term'])) {
                     </a>
                 </h4>
                 <p><?= htmlspecialchars($room['description']) ?></p>
+                <?php if ($room['image']): ?>
+                    <p style="color: #5a5de6; font-size: 14px; margin-top: 5px;"><i class="fa-solid fa-image"></i> Includes an image</p>
+                <?php endif; ?>
+                
             </div>
         <?php endwhile; ?>
         </div>

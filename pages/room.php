@@ -21,7 +21,7 @@ $id = (int) $_GET['id'];
 // We join 'rooms' (r) and 'users' (u) where their user_id matches.
 // This allows us to get the room details AND the name of the person who created it.
 $roomStmt = $conn->prepare(
-    "SELECT r.title, r.description, u.username 
+    "SELECT r.title, r.description, r.image, u.username 
      FROM rooms r 
      INNER JOIN users u ON r.user_id = u.user_id 
      WHERE r.room_id = ?"
@@ -39,10 +39,13 @@ if (!$room) {
 <div class="container">
     <h2 class="room-title"><?= htmlspecialchars($room['title']) ?></h2>
     <p class="room-desc"><?= nl2br(htmlspecialchars($room['description'])) ?></p>
+    <?php if ($room['image']): ?>
+        <img src="../assets/images/<?= htmlspecialchars($room['image']) ?>" alt="Room Image" style="max-width: 100%; max-height: 200px; height: auto; margin: 0 auto 20px auto; display: block;">
+    <?php endif; ?>
     <p class="made-by">Room made by <?= htmlspecialchars($room['username']) ?></p>
 
 
-    <form method="POST" action="../actions/submit_feedback.php" class="feedback-form">
+    <form method="POST" action="../actions/submit_feedback.php" enctype="multipart/form-data" class="feedback-form">
         <input type="hidden" name="room_id" value="<?= $id ?>">
 
         <?php
@@ -50,29 +53,10 @@ if (!$room) {
         $sessionName = isset($_SESSION['username']) ? $_SESSION['username'] : 'Anon';
         ?>
         
-        <input type="hidden" name="display_name" id="display_name_input" value="Anon">
-        
-        <label>
-            <input type="checkbox" id="use_session_name_chk" name="use_session_name" value="1">
-            <p class="uname">Use my account name (<?= htmlspecialchars($sessionName) ?>)</p>
-        </label>
-
-        <script>
-        (function(){ 
-            // Select the checkbox and the hidden input field
-            var chk = document.getElementById('use_session_name_chk');
-            var inp = document.getElementById('display_name_input');
-            var uname = <?= json_encode($sessionName) ?>; // Pass PHP variable to JS safely
-
-            // Listen for clicks on the checkbox
-            chk.addEventListener('change', function(){
-                // If checked, set hidden input to username; if unchecked, set to 'Anon'
-                inp.value = this.checked ? uname : 'Anon';
-            });
-        })();
-        </script>
+        <input type="hidden" name="display_name" value="<?= htmlspecialchars($sessionName) ?>">
 
         <textarea name="message" placeholder="Write your feedback..." required></textarea>
+        <input type="file" name="image" accept="image/*" class="file-input">
 
         <button type="submit">Post Feedback</button>
         <a href="rooms.php" class="link">Back to rooms</a>
@@ -84,7 +68,7 @@ if (!$room) {
     <?php
     // Get all feedback for this specific room, newest first
     $comments = $conn->prepare(
-        "SELECT display_name, message, created_at
+        "SELECT display_name, message, created_at, image
          FROM feedback
          WHERE room_id = ?
          ORDER BY created_at DESC"
@@ -99,6 +83,9 @@ if (!$room) {
         <div class="comment">
             <strong class="msg-title"><?= htmlspecialchars($row['display_name']) ?></strong>
             <p class="msg"><?= nl2br(htmlspecialchars($row['message'])) ?></p>
+            <?php if ($row['image']): ?>
+                <img src="../assets/images/<?= htmlspecialchars($row['image']) ?>" alt="Feedback Image" style="max-width: 200px; height: auto; margin-top: 10px; display: block;">
+            <?php endif; ?>
             <small class="crdt"><?= $row['created_at'] ?></small>
         </div>
     <?php endwhile; ?>
