@@ -1,0 +1,3 @@
+ALTER TABLE users ADD COLUMN email VARCHAR(255) UNIQUE AFTER username;
+ALTER TABLE rooms ADD COLUMN image VARCHAR(255) AFTER description;
+ALTER TABLE feedback ADD COLUMN image VARCHAR(255) AFTER display_name;
