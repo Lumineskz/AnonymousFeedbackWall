@@ -152,7 +152,7 @@ body{
     min-width: 215px;
     max-width: 215px;
     min-height: 100px;
-    max-height: 400px;
+    max-height: 200px; 
     text-overflow: ellipsis;
 }
 .card-room p{
