@@ -17,8 +17,8 @@ include "../config/config.php";
 <form method="POST" action="../actions/login_user.php" class="login-form">
     <h2>Log In</h2>
 
-    <!-- Username input field -->
-    <input name="username" placeholder="Username" required>
+    <!-- Email input field -->
+    <input name="email" type="email" placeholder="Email" required>
     <!-- Password input field -->
     <input name="password" type="password" placeholder="Password" required>
 

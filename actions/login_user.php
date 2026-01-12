@@ -4,21 +4,21 @@ session_start();
 // Include database configuration
 include "../config/config.php";
 
-if (!isset($_POST['username'], $_POST['password'])) {
+if (!isset($_POST['email'], $_POST['password'])) {
     die("Invalid request");
 }
 
-$u = trim($_POST['username']);
+$e = trim($_POST['email']);
 $p = $_POST['password'];
 
 // Use prepared statement to safely query the database
 $stmt = $conn->prepare(
     "SELECT user_id, username, password, role
      FROM users
-     WHERE username = ?"
+     WHERE email = ?"
 );
-// Bind the username variable to the ? placeholder
-$stmt->bind_param("s", $u);
+// Bind the email variable to the ? placeholder
+$stmt->bind_param("s", $e);
 // Execute the prepared statement
 $stmt->execute();
 $result = $stmt->get_result();

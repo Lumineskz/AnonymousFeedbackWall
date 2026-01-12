@@ -5,6 +5,7 @@
 </head>
 <form method="POST" action="../actions/register_user.php" class="login-form">
     <h2>Register</h2>
+    <input name="email" type="email" placeholder="Email" required>
     <input name="username" placeholder="Username" required>
     <input name="password" type="password" placeholder="Password" required>
     <button>Register</button>
