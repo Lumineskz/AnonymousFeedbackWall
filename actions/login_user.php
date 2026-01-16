@@ -32,8 +32,12 @@ if ($user && password_verify($p, $user['password'])) {
     $_SESSION['username'] = $user['username'];
     $_SESSION['role'] = $user['role'];
 
-    // Redirect to rooms page after successful login
-    header("Location: ../pages/rooms.php");
+    // Redirect to admin panel if admin, otherwise to rooms page
+    if ($user['role'] === 'admin') {
+        header("Location: ../pages/admin.php");
+    } else {
+        header("Location: ../pages/rooms.php");
+    }
     exit();
 } else {
     // Login failed - user not found or password incorrect
