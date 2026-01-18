@@ -28,6 +28,10 @@ if (isset($_GET['deleted'])) {
         $message = 'You cannot delete your own account!';
     } elseif ($_GET['error'] === 'cannot_demote_self') {
         $message = 'You cannot demote yourself from admin!';
+    } elseif ($_GET['error'] === 'empty_fields') {
+        $message = 'All fields are required!';
+    } elseif ($_GET['error'] === 'update_failed') {
+        $message = 'Update failed. Please try again.';
     }
 }
 ?>
@@ -204,8 +208,8 @@ if (isset($_GET['deleted'])) {
                         <td><?= date('M d, Y H:i', strtotime($feedback['created_at'])) ?></td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-edit" onclick="viewFeedback(<?= $feedback['feedback_id'] ?>)">
-                                    <i class="fa-solid fa-eye"></i> View
+                                <button class="btn-edit" onclick="editFeedback(<?= $feedback['feedback_id'] ?>)">
+                                    <i class="fa-solid fa-edit"></i> Edit
                                 </button>
                                 <button class="btn-delete" onclick="deleteFeedback(<?= $feedback['feedback_id'] ?>)">
                                     <i class="fa-solid fa-trash"></i> Delete
@@ -224,15 +228,255 @@ if (isset($_GET['deleted'])) {
     </main>
 </div>
 
+<!-- Edit Room Modal -->
+<div id="editRoomModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditRoomModal()">&times;</span>
+        <h2>Edit Room</h2>
+        <form method="POST" action="../actions/admin_update_room.php">
+            <input type="hidden" id="roomId" name="room_id">
+            <div class="form-group">
+                <label for="roomTitle">Title:</label>
+                <input type="text" id="roomTitle" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="roomDescription">Description:</label>
+                <textarea id="roomDescription" name="description" rows="4" required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Update Room</button>
+                <button type="button" class="btn-cancel" onclick="closeEditRoomModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit User Modal -->
+<div id="editUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditUserModal()">&times;</span>
+        <h2>Edit User</h2>
+        <form method="POST" action="../actions/admin_update_user.php">
+            <input type="hidden" id="userId" name="user_id">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" disabled>
+            </div>
+            <div class="form-group">
+                <label for="userRole">Role:</label>
+                <select id="userRole" name="role" required>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Update User</button>
+                <button type="button" class="btn-cancel" onclick="closeEditUserModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Feedback Modal -->
+<div id="editFeedbackModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditFeedbackModal()">&times;</span>
+        <h2>Edit Feedback</h2>
+        <form method="POST" action="../actions/admin_update_feedback.php">
+            <input type="hidden" id="feedbackId" name="feedback_id">
+            <div class="form-group">
+                <label for="feedbackRoom">Room:</label>
+                <input type="text" id="feedbackRoom" disabled>
+            </div>
+            <div class="form-group">
+                <label for="feedbackAuthor">Author Name:</label>
+                <input type="text" id="feedbackAuthor" name="display_name" required>
+            </div>
+            <div class="form-group">
+                <label for="feedbackMessage">Message:</label>
+                <textarea id="feedbackMessage" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Update Feedback</button>
+                <button type="button" class="btn-cancel" onclick="closeEditFeedbackModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: #151515;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-submit,
+.btn-cancel {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-submit {
+    background-color: #5a5de6;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #4a4db8;
+}
+
+.btn-cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #d0d0d0;
+}
+</style>
+
 <script>
+// Room Modal Functions
+function editRoom(roomId) {
+    fetch('../actions/admin_get_room.php?id=' + roomId)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('roomId').value = data.room_id;
+            document.getElementById('roomTitle').value = data.title;
+            document.getElementById('roomDescription').value = data.description;
+            document.getElementById('editRoomModal').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load room data');
+        });
+}
+
+function closeEditRoomModal() {
+    document.getElementById('editRoomModal').style.display = 'none';
+}
+
+// User Modal Functions
+function editUser(userId) {
+    fetch('../actions/admin_get_user.php?id=' + userId)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('userId').value = data.user_id;
+            document.getElementById('username').value = data.username;
+            document.getElementById('userRole').value = data.role;
+            document.getElementById('editUserModal').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load user data');
+        });
+}
+
+function closeEditUserModal() {
+    document.getElementById('editUserModal').style.display = 'none';
+}
+
+// Feedback Modal Functions
+function editFeedback(feedbackId) {
+    fetch('../actions/admin_get_feedback.php?id=' + feedbackId)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('feedbackId').value = data.feedback_id;
+            document.getElementById('feedbackRoom').value = data.title;
+            document.getElementById('feedbackAuthor').value = data.display_name;
+            document.getElementById('feedbackMessage').value = data.message;
+            document.getElementById('editFeedbackModal').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load feedback data');
+        });
+}
+
+function closeEditFeedbackModal() {
+    document.getElementById('editFeedbackModal').style.display = 'none';
+}
+
+// Delete Functions
 function deleteRoom(roomId, title) {
     if (confirm(`Are you sure you want to delete room "${title}"?`)) {
         window.location.href = '../actions/admin_delete_room.php?id=' + roomId;
     }
-}
-
-function editRoom(roomId) {
-    alert('Edit functionality coming soon');
 }
 
 function deleteUser(userId, username) {
@@ -241,24 +485,27 @@ function deleteUser(userId, username) {
     }
 }
 
-function editUser(userId) {
-    // Get the current user data via AJAX or form
-    fetch('../actions/admin_get_user.php?id=' + userId)
-        .then(response => response.json())
-        .then(data => {
-            showEditUserModal(data);
-        })
-        .catch(error => console.error('Error:', error));
-}
-
 function deleteFeedback(feedbackId) {
     if (confirm('Are you sure you want to delete this feedback?')) {
         window.location.href = '../actions/admin_delete_feedback.php?id=' + feedbackId;
     }
 }
 
-function viewFeedback(feedbackId) {
-    alert('View functionality coming soon');
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    let roomModal = document.getElementById('editRoomModal');
+    let userModal = document.getElementById('editUserModal');
+    let feedbackModal = document.getElementById('editFeedbackModal');
+    
+    if (event.target === roomModal) {
+        roomModal.style.display = 'none';
+    }
+    if (event.target === userModal) {
+        userModal.style.display = 'none';
+    }
+    if (event.target === feedbackModal) {
+        feedbackModal.style.display = 'none';
+    }
 }
 </script>
 

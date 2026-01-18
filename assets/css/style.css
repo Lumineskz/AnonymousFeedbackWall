@@ -347,6 +347,146 @@ body{
     text-align: center;
     margin-bottom: 30px;
 }
+/* Edit pages (edit_room.php, edit_feedback.php) */
+.edit-container {
+    max-width: 700px;
+    margin: 80px auto;
+    background: #f3f3ff;
+    padding: 24px;
+    border-radius: 12px;
+    border: 2px solid #e6e4fb;
+    box-shadow: 0 6px 18px rgba(56,44,158,0.06);
+}
+
+.edit-container h2 {
+    color: #151515;
+    margin-bottom: 16px;
+    font-size: 22px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edit-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.edit-form input[type="text"],
+.edit-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d7d2fb;
+    border-radius: 8px;
+    background: #fff;
+    color: #151515;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.edit-form input[type="text"]:focus,
+.edit-form textarea:focus {
+    outline: none;
+    border-color: #6b55f6;
+    box-shadow: 0 0 8px rgba(99,66,255,0.12);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #5a5de6;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #4746c8;
+}
+
+.btn-secondary {
+    background: #efefff;
+    color: #333;
+    border: 1px solid #e1deff;
+}
+
+.btn-secondary:hover {
+    background: #e6e6ff;
+}
+
+/* Small helper for error/success messages on edit pages */
+.page-message {
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+.container-editor {
+    margin: 80px 40%;
+    background-color: #f3f3ff;
+    padding: 20px;
+    border-radius: 12px;
+}
+.container-editor h2 {
+    font-size: 20px;
+}
+.container-editor form {
+    margin-top: 16px;
+}
+.container-editor label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+}
+.container-editor input[type="text"],
+.container-editor textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d7d2fb;
+    border-radius: 8px;
+    background: #fff;
+    color: #151515;
+    font-size: 14px;
+    resize: vertical;
+}
+.container-editor button{
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: #5a5de6;
+    color: #fff;
+}
+
+
+.page-message.success {
+    background: #e7f6ee;
+    color: #1a6b3a;
+    border: 1px solid #cfead3;
+}
+
+.page-message.error {
+    background: #fff1f1;
+    color: #8a1f1f;
+    border: 1px solid #f4cfcf;
+}
 
 /* Responsive Page Mobile */
 @media (max-width: 768px) {
@@ -412,4 +552,7 @@ body{
     .room-title {
         font-size: 22px; /* Adjust title size for mobile */
     }
+    .edit-container { margin: 40px 16px; padding: 18px; }
+    .edit-container h2 { font-size: 18px; }
+    .form-actions { flex-direction: column; }
 }
